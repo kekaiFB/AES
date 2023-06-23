@@ -9,7 +9,6 @@
 ```
 pipenv shell
 py manage.py runserver
-
 ```
 
 - Данные можно добавлять через админ панель. Логин и пароль: admin
