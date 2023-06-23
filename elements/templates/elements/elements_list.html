@@ -1,0 +1,51 @@
+{% extends "elements/base.html" %}
+{% load static %} 
+
+{% block content %}   
+    
+
+     
+<div class="container-fluid "> 
+    <div class="row bg-primary p-2">
+        <div class="col p-0 m-0">           
+            <img width="200" src="{% static 'image/logo.jpg' %}">  
+        </div>
+        
+        <div class="col-10 text-white d-flex">
+                {% for t in tab %}
+                    <span class="h5 m-4 tab tab_{{t.id}}" >
+                        {{t.title}}
+                    </span>
+                {% endfor %}
+        </div>
+
+          
+    </div>
+    <div class="row full-height full-width">
+        <div class="col bg-light ">           
+            {% for t in tab %}
+                {% for elem in t.elements.all %}
+                <h5 style="display: none" class="m-2 element tab_{{t.id}}" id="elem_{{elem.id}}">{{elem.title}}</h5>
+                    <div hidden class="elem_{{elem.id}}_content">
+                        {{elem.content|safe}}
+                    </div>
+                    <div hidden class="elem_{{elem.id}}_image">
+                        {% for img in elem.images.all %}
+                            <img width="600" class="rounded mt-2" src="{{img.photo.url}}">
+                        {% endfor %}
+                    </div>
+                    {% for file in elem.files.all %}
+                        <div hidden class="elem_{{elem.id}}_fbx">
+                            {{file.files.url}}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            {% endfor %}
+        </div>
+        
+        <div class="content_div col-5 h-6 m-2"></div>
+        <div class="fbx_div col-5  m-2"></div>
+    </div>
+</div>
+
+{% endblock %} 
