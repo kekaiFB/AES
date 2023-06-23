@@ -13,6 +13,8 @@ pipenv shell
 pip install python-decouple
 pip install dj-database-url
 pip install django-debug-toolbar
+
+py manage.py runserver
 ```
 
 - Данные можно добавлять через админ панель. Логин и пароль: admin
